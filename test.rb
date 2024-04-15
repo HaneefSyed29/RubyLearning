@@ -204,6 +204,36 @@ book1.author = "JK Rowling"
 book1.pages = 400
 # to check how exactly the book1 look like 
 puts book1
-#initilaize method
+# MCQ application 
+class Question
+  attr_accessor :prompt, :answer
+  def initialize(prompt, answer)
+    @prompt = prompt
+    @answer = answer
+  end
+end
 
+q1 = "Capital of Maharashtra?\n(a)Mumbai\n(b)Pune\n(c)Nagpur"
+q2 = "Capital of Telangana?\n(a)Nellore\n(b)Hyderabad\n(c)Nagpur"
+q3 = "Capital of AP?\n(a)Rajkot\n(b)Nashik\n(c)Vijaywada"
 
+questions = [
+  Question.new(q1, "a"),
+  Question.new(q2, "b"),
+  Question.new(q3, "c")
+]
+
+def run_quiz(questions)
+  answer = ""
+  score = 0
+  for question in questions
+    puts question.prompt
+    answer = gets.chomp()
+    if answer == question.answer
+      score += 1
+    end
+  end
+  puts ("You got Score " + score.to_s + "/" + questions.length.to_s) 
+end
+
+run_quiz(questions)
